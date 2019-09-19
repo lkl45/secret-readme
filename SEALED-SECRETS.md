@@ -30,15 +30,17 @@ Start with a Secret yaml file.
 apiVersion: v1
 kind: Secret
 metadata:
-	name: mysecret
-	namespace: mynamespace
+name: mysecret
+namespace: mynamespace
 data:
-	PASSWORD_A: dXNlcg==
+PASSWORD_A: dXNlcg==
 ```
 Create a SealedSecret using the Verizon custom plugin:
 
-	# Custom command for generating a SealedSecret
-	$ kubeseal <mysecret.yaml >mysealedsecret.yaml #Update this custom command from verizon
+```
+# Custom command for generating a SealedSecret
+$ kubeseal <mysecret.yaml >mysealedsecret.yaml #Update this custom command from verizon
+```
 
 The resulting SealedSecret that is stored in this repository will look like:
 
@@ -56,7 +58,9 @@ Secrets can be configured as environment variables or as files.
 ### Environment Variable
 Create environment variables from SealedSecret
 
-	# deployment yaml goes here  
+```yaml
+
+```
 	
 Use the previously configured environment variables in Spring application properties file.
 ```properties
