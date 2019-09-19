@@ -1,16 +1,12 @@
-# Secrets  
-
-A Secret is an object that contains a small amount of sensitive data such as a password. Putting this information in a Secret object allows for more control over how it is used and reduces the risk of accidental exposure.
-
-To use a secret, a pod needs to reference the secret. A secret can be used with a pod in two ways: as files in a volume mounted on one or more of its containers, or used by kubelet when pulling images for the pod.
-
 # Sealed Secrets
 
-Sealed Secrets are composed of a cluster-side controller/operator and a client-side utility, kubeseal.  The kubeseal utility uses asymmetric crypto to encrypt secrets that only the controller can decrypt.  
+A Secret is an object that contains a small amount of sensitive data such as a password. Putting this information in a Secret object allows for more control over how it is used and reduces the risk of accidental exposure.  Secrets are simply encoded into Base 64 so the original values can easily be obtained.  
+
+Sealed Secrets are composed of a cluster-side controller/operator and a client-side utility, **kubeseal**.  The **kubeseal** utility uses asymmetric crypto to encrypt secrets that only the controller can decrypt.  
 
 The SealedSecret can only be decrypted by the controller running in the target cluster.  Therefore, Sealed Secrets can be safely stored in your repository and no one can obtain the original Secret from the Sealed Secret.
 
-Sealed Secrets are located in a repository with the following structure:
+Sealed Secrets are located in this repository with the following structure:
 ```
 <VSAD NAME>/  
 ├── <ENVIRONMENT NAME>/  
@@ -29,7 +25,18 @@ Sealed Secrets are located in a repository with the following structure:
 
 ## Generating Sealed Secrets
 
-Start with a Secret yaml file.
+Start with a Secret yaml file.  
+
+		apiVersion: v1
+		kind: Secret
+		metadata:
+			name: db-secret
+		data:
+			PASSWORD_A: dXNlcg==
+			ANOTHER_PASSWORD: cDQ1NXcwcmQ=
+	
+
+Execute the following:
 
 	# This is the important bit:
 	$ kubeseal <mysecret.yaml >mysealedsecret.yaml
@@ -42,8 +49,10 @@ Start with a Secret yaml file.
 
 
 ## Using Sealed Secrets 
-TBD
 
-For more information see: 
-* [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)
-* [Sealed Secrets](https://github.com/bitnami-labs/sealed-secrets)
+Environment variables
+Spring configuration
+
+**For more information see:**
+[Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/),
+[Sealed Secrets](https://github.com/bitnami-labs/sealed-secrets)
