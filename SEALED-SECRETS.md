@@ -27,13 +27,13 @@ Sealed Secrets are located in this repository with the following structure:
 
 Start with a Secret yaml file.  
 ```yaml
-	apiVersion: v1
-	kind: Secret
-	metadata:
-		name: mysecret
-		namespace: mynamespace
-	data:
-		PASSWORD_A: dXNlcg==
+apiVersion: v1
+kind: Secret
+metadata:
+	name: mysecret
+	namespace: mynamespace
+data:
+	PASSWORD_A: dXNlcg==
 ```
 Create a SealedSecret using the Verizon custom plugin:
 
@@ -60,7 +60,7 @@ Create environment variables from SealedSecret
 	
 Use the previously configured environment variables in Spring application properties file.
 ```properties
-	some.password=${SECRETS_PASSWORD_A}
+some.password=${SECRETS_PASSWORD_A}
 ```
 
 
