@@ -51,6 +51,7 @@ Execute the following:
 ## Using Sealed Secrets 
 
 Environment variables
+deployment yaml
 Spring configuration
 
 **For more information see:**
