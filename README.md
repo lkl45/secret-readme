@@ -27,13 +27,13 @@ Sealed Secrets are located in this repository with the following structure:
 
 Start with a Secret yaml file.  
 
-		apiVersion: v1
-		kind: Secret
-		metadata:
-			name: db-secret
-		data:
-			PASSWORD_A: dXNlcg==
-			ANOTHER_PASSWORD: cDQ1NXcwcmQ=
+	apiVersion: v1
+	kind: Secret
+	metadata:
+		name: mysecret
+	data:
+		PASSWORD_A: dXNlcg==
+		ANOTHER_PASSWORD: cDQ1NXcwcmQ=
 	
 
 Execute the following:
@@ -44,15 +44,15 @@ Execute the following:
 	# mysealedsecret.yaml is safe to upload to github, etc
 	$ kubectl create -f mysealedsecret.yaml
 
-	# Profit!
+	# Get the secret
 	$ kubectl get secret mysecret
 
 
 ## Using Sealed Secrets 
 
-Environment variables
-deployment yaml
-Spring configuration
+Environment variables  
+deployment yaml  
+Spring configuration  
 
 **For more information see:**
 [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/),
