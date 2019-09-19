@@ -31,10 +31,9 @@ Start with a Secret yaml file.
 	kind: Secret
 	metadata:
 		name: mysecret
+		namespace: mynamespace
 	data:
 		PASSWORD_A: dXNlcg==
-		ANOTHER_PASSWORD: cDQ1NXcwcmQ=
-	
 
 Execute the following:
 
@@ -47,12 +46,30 @@ Execute the following:
 	# Get the secret
 	$ kubectl get secret mysecret
 
+SealedSecret stored in source control will look like:
+
+	apiVersion: bitnami.com/v1alpha1
+	kind: SealedSecret
+	metadata:
+		name: mysecret
+		namespace: mynamespace
+	spec:
+		encryptedData:
+			PASSWORD_A: AgBy3i4OJSWK+PiTySYZZA9rO43cGDEq.....
+
+Note the SealedSecret and Secret must have the same namespace and name.
 
 ## Using Sealed Secrets 
+Secrets can be configured as environment variables or as files.
 
-Environment variables  
-deployment yaml  
-Spring configuration  
+Create environment variables from SealedSecret
+	deployment yaml goes here  
+	
+Use the previously configured environment variables in Spring application properties file.
+
+	some.password=${SECRETS_PASSWORD_A}
+
+
 
 **For more information see:**
 [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/),
