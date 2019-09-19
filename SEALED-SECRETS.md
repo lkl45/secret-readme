@@ -35,16 +35,16 @@ Start with a Secret yaml file.
 	data:
 		PASSWORD_A: dXNlcg==
 
-Create a sealed secret using the Verizon custom plugin:
+Create a SealedSecret using the Verizon custom plugin:
 
 	# Custom command for generating a SealedSecret
 	$ kubeseal <mysecret.yaml >mysealedsecret.yaml #Update this custom command from verizon
 
-SealedSecret stored in source control will look like:
+The resulting SealedSecret that is stored in this repository will look like:
 
 	#some yaml goes here
 
-Note the SealedSecret and Secret must have the same namespace and name.
+**Note: The Secret and SealedSecret must have the same namespace and name.**
 
 ## Using Sealed Secrets 
 Run command to apply secrets.
