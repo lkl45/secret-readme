@@ -9,17 +9,17 @@ The SealedSecret can only be decrypted by the controller running in the target c
 Sealed Secrets are located in this repository with the following structure:
 ```
 <VSAD NAME>/  
-├── <ENVIRONMENT NAME>/  
-│	 ├── microservice1-sealedsecrets-<ENVIRONMENT NAME>.yaml
-│	 ├── microservice2-sealedsecrets-<ENVIRONMENT NAME>.yaml  
-│	 └── microservice3-sealedsecrets-<ENVIRONMENT NAME>.yaml
-├──  sit  
-│	 ├── microservice1-sealedsecrets-sit.yaml
+├── <MICROSERVICE NAME>/  
+│	 ├── <MICROSERVICE NAME>-sealedsecrets-<ENVIRONMENT NAME>.yaml
+│	 ├── <MICROSERVICE NAME>-sealedsecrets-sit.yaml  
+│	 └── <MICROSERVICE NAME>-sealedsecrets-stg.yaml
+├──  microservice2  
+│	 ├── microservice2-sealedsecrets-dev.yaml
 │	 ├── microservice2-sealedsecrets-sit.yaml  
-│	 └── microservice3-sealedsecrets-sit.yaml 
-├── stg 
-│	 ├── microservice1-sealedsecrets-stg.yaml
-│	 ├── microservice2-sealedsecrets-stg.yaml  
+│	 └── microservice2-sealedsecrets-stg.yaml 
+├── microservice3 
+│	 ├── microservice3-sealedsecrets-dev.yaml
+│	 ├── microservice3-sealedsecrets-sit.yaml  
 │	 └── microservice3-sealedsecrets-stg.yaml
 ```
 
@@ -35,35 +35,26 @@ Start with a Secret yaml file.
 	data:
 		PASSWORD_A: dXNlcg==
 
-Execute the following:
+Create a sealed secret using the Verizon custom plugin:
 
-	# This is the important bit:
-	$ kubeseal <mysecret.yaml >mysealedsecret.yaml
-
-	# mysealedsecret.yaml is safe to upload to github, etc
-	$ kubectl create -f mysealedsecret.yaml
-
-	# Get the secret
-	$ kubectl get secret mysecret
+	# Custom command for generating a SealedSecret
+	$ kubeseal <mysecret.yaml >mysealedsecret.yaml #Update this custom command from verizon
 
 SealedSecret stored in source control will look like:
 
-	apiVersion: bitnami.com/v1alpha1
-	kind: SealedSecret
-	metadata:
-		name: mysecret
-		namespace: mynamespace
-	spec:
-		encryptedData:
-			PASSWORD_A: AgBy3i4OJSWK+PiTySYZZA9rO43cGDEq.....
+	#some yaml goes here
 
 Note the SealedSecret and Secret must have the same namespace and name.
 
 ## Using Sealed Secrets 
+Run command to apply secrets.
+
 Secrets can be configured as environment variables or as files.
 
+### Environment Variable
 Create environment variables from SealedSecret
-	deployment yaml goes here  
+
+	# deployment yaml goes here  
 	
 Use the previously configured environment variables in Spring application properties file.
 
