@@ -30,10 +30,10 @@ Start with a Secret yaml file.
 apiVersion: v1
 kind: Secret
 metadata:
-name: mysecret
-namespace: mynamespace
+    name: mysecret
+    namespace: mynamespace
 data:
-PASSWORD_A: dXNlcg==
+    PASSWORD_A: dXNlcg==
 ```
 Create a SealedSecret using the Verizon custom plugin:
 
