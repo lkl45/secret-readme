@@ -47,7 +47,7 @@ The resulting SealedSecret that is stored in this repository will look like:
 #TODO, get SealedSecret example
 ```
 
-**Note: The Secret and SealedSecret must have the same namespace and name.**
+***Note: The Secret and SealedSecret must have the same namespace and name.***
 
 Run this command to apply secrets:
 ```
