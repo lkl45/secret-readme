@@ -46,13 +46,13 @@ The resulting SealedSecret that is stored in this repository will look like:
 ```yaml
 #TODO, get SealedSecret example
 ```
-
-***Note: The Secret and SealedSecret must have the same namespace and name.***
+<span style="font-size:smaller;">***Note: The Secret and SealedSecret must have the same namespace and name.***</span>
 
 Run this command to apply secrets:
 ```
+#TODO, command to apply secrets
 ```
-This command is executed as part of the pipeline.
+This command is executed as part of the CI/CD pipeline.
 ## Using Sealed Secrets
 Secrets can be configured as environment variables or as files.
 
