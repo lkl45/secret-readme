@@ -24,7 +24,6 @@ Sealed Secrets are located in this repository with the following structure:
 ```
 
 ## Generating Sealed Secrets
-
 Start with a Secret yaml file.  
 ```yaml
 apiVersion: v1 #TODO, get a sample
@@ -53,7 +52,7 @@ The resulting SealedSecret that is stored in this repository will look like:
 Run this command to apply secrets:
 ```
 ```
-This command is executed as part of the deployment pipeline.
+This command is executed as part of the pipeline.
 ## Using Sealed Secrets
 Secrets can be configured as environment variables or as files.
 
