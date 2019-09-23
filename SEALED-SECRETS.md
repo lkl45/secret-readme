@@ -51,8 +51,9 @@ The resulting SealedSecret that is stored in this repository will look like:
 Run this command to apply secrets:
 ```
 #TODO, command to apply secrets
+kubectl apply -f mysealedsecret.yaml
 ```
-This command is executed as part of the CI/CD pipeline.
+This command is executed as part of the deployment.
 ## Using Sealed Secrets
 Secrets can be configured as environment variables or as files.
 
