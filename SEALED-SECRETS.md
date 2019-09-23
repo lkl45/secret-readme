@@ -16,8 +16,8 @@ Sealed Secrets are located in this repository with the following structure:
 ├──  microservice2  
 │	 ├── microservice2-sealedsecrets-dev.yaml
 │	 ├── microservice2-sealedsecrets-sit.yaml  
-│	 └── microservice2-sealedsecrets-stg.yaml 
-├── microservice3 
+│	 └── microservice2-sealedsecrets-stg.yaml
+├── microservice3
 │	 ├── microservice3-sealedsecrets-dev.yaml
 │	 ├── microservice3-sealedsecrets-sit.yaml  
 │	 └── microservice3-sealedsecrets-stg.yaml
@@ -27,7 +27,7 @@ Sealed Secrets are located in this repository with the following structure:
 
 Start with a Secret yaml file.  
 ```yaml
-apiVersion: v1
+apiVersion: v1 #TODO, get a sample
 kind: Secret
 metadata:
     name: mysecret
@@ -45,12 +45,12 @@ $ kubeseal <mysecret.yaml >mysealedsecret.yaml #Update this custom command from 
 The resulting SealedSecret that is stored in this repository will look like:
 
 ```yaml
-
+#TODO, get SealedSecret example
 ```
 
 **Note: The Secret and SealedSecret must have the same namespace and name.**
 
-## Using Sealed Secrets 
+## Using Sealed Secrets
 Run command to apply secrets.
 
 Secrets can be configured as environment variables or as files.
@@ -59,15 +59,25 @@ Secrets can be configured as environment variables or as files.
 Create environment variables from SealedSecret
 
 ```yaml
-
+apiVersion: v1 #TODO, use real example
+kind: Pod
+metadata:
+  name: secret-env-pod
+spec:
+  containers:
+  - env:
+      - name: SECRET_PASSWORD_A
+        valueFrom:
+          secretKeyRef:
+            name: mysecret
+            key: PASSWORD_A
 ```
-	
-Use the previously configured environment variables in Spring application properties file.
+
+Use the previously configured environment variables in Spring application.properties file.
 ```properties
-some.password=${SECRETS_PASSWORD_A}
+some.password=${SECRETS_PASSWORD_A} #TODO, use real example
 ```
 
-
-**For more information see:**
-[Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/),
-[Sealed Secrets](https://github.com/bitnami-labs/sealed-secrets)
+### For more information see:
+- [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)  
+- [Sealed Secrets](https://github.com/bitnami-labs/sealed-secrets)
