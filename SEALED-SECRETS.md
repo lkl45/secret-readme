@@ -50,13 +50,15 @@ The resulting SealedSecret that is stored in this repository will look like:
 
 **Note: The Secret and SealedSecret must have the same namespace and name.**
 
+Run this command to apply secrets:
+```
+```
+This command is executed as part of the deployment pipeline.
 ## Using Sealed Secrets
-Run command to apply secrets.
-
 Secrets can be configured as environment variables or as files.
 
 ### Environment Variable
-Create environment variables from SealedSecret
+Update the deployment configuration to create environment variables from Sealed Secrets.
 
 ```yaml
 apiVersion: v1 #TODO, use real example
